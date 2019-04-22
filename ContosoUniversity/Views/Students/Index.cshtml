@@ -1,0 +1,30 @@
+﻿@model List<ContosoUniversity.Models.Student>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Students</h2>
+<a href='@Url.Action("New","Students")' class="btn btn-primary">Create New</a>
+
+<table class="table">
+    <tr>
+        <th>Student First Name</th>
+        <th>Student Last Name</th>
+        <th>Enrollment Date</th>
+        <th></th>
+    </tr>
+    @foreach (var student in Model)
+    {
+        <tr>
+            <td>@student.FirstMidName</td>
+            <td>@student.LastName</td>
+            <td>@student.EnrollmentDate</td>
+            <td>
+                @Html.ActionLink("Edit", "Students", new { id = student.StudentID }) |
+                @Html.ActionLink("Details", "Students", new { id = student.StudentID }) |
+                @Html.ActionLink("Delete", "Students", new { id = student.StudentID })
+            </td>
+        </tr>
+    }
+</table>
