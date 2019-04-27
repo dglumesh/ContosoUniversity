@@ -1,0 +1,24 @@
+﻿@model ContosoUniversity.ViewModels.StudentCourseViewModel
+@{
+                /**/
+
+                ViewBag.Title = "EnrollmentForm";
+                Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Enrollment Form</h2>
+@using (Html.BeginForm("Save", "Index"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Course)
+        @Html.DropDownListFor(m => m.Course, new SelectList(Model.Course, "CourseID", "Title"), "Select Course Type", new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Student)
+        @Html.DropDownListFor(m => m.Student, new SelectList(Model.Student, "StudentID", "LastName"), "Select Course Type", new { @class = "form-control" })
+    </div>
+    <input type="submit" class="btn btn-primary" />
+}
+
+
+

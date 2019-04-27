@@ -1,0 +1,18 @@
+﻿@model ContosoUniversity.Models.Course
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+<p>Are you sure want to delete this?</p>
+<div>
+    @Html.DisplayNameFor(m => m.Title) : @Html.DisplayFor(m => m.Title)
+</div>
+<div>
+    @Html.DisplayNameFor(m => m.Credits) : @Html.DisplayFor(m => m.Credits)
+</div>
+@using (Html.BeginForm())
+{
+    <input type="submit" class="btn btn-primary" value="Delete" /> @Html.ActionLink("Back to List", "Index")
+}

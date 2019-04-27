@@ -132,6 +132,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CourseController.cs" />
+    <Compile Include="Controllers\EnrollmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="DAL\SchoolContext.cs" />
@@ -139,10 +141,20 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904271600327_InitialCreate.cs" />
+    <Compile Include="Migrations\201904271600327_InitialCreate.Designer.cs">
+      <DependentUpon>201904271600327_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904271603012_addAnnotationToStudent.cs" />
+    <Compile Include="Migrations\201904271603012_addAnnotationToStudent.Designer.cs">
+      <DependentUpon>201904271603012_addAnnotationToStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Enrollment.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\StudentCourseViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -187,6 +199,13 @@
     <Content Include="Views\Student\Delete.cshtml" />
     <Content Include="Views\Student\Details.cshtml" />
     <Content Include="Views\Student\Edit.cshtml" />
+    <Content Include="Views\Course\Index.cshtml" />
+    <Content Include="Views\Course\Create.cshtml" />
+    <Content Include="Views\Course\Details.cshtml" />
+    <Content Include="Views\Course\Edit.cshtml" />
+    <Content Include="Views\Course\Delete.cshtml" />
+    <Content Include="Views\Enrollment\Index.cshtml" />
+    <Content Include="Views\Enrollment\EnrollmentForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -203,6 +222,14 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201904271600327_InitialCreate.resx">
+      <DependentUpon>201904271600327_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904271603012_addAnnotationToStudent.resx">
+      <DependentUpon>201904271603012_addAnnotationToStudent.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

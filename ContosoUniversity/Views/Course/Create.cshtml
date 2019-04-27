@@ -1,0 +1,19 @@
+﻿@model ContosoUniversity.Models.Course
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm("Save","Course"))
+{<div class="form-group">
+    @Html.LabelFor(m => m.Title)
+    @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+</div>
+ <div class="form-group">
+     @Html.LabelFor(m => m.Credits)
+     @Html.TextBoxFor(m => m.Credits, new { @class = "form-control" })
+ </div>  
+ <button type="submit" class="btn btn-primary">Save</button>
+}

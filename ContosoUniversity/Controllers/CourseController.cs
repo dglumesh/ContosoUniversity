@@ -1,96 +1,85 @@
 ﻿using ContosoUniversity.DAL;
+using ContosoUniversity.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using ContosoUniversity.Models;
-using System.Net;
-using System.Data.Entity.Infrastructure;
 
 namespace ContosoUniversity.Controllers
 {
-    public class StudentController : Controller
+    public class CourseController : Controller
     {
         SchoolContext db = new SchoolContext();
-        // GET: Students
+        // GET: Course
         public ActionResult Index()
         {
-           
-
-            return View(db.Students.ToList());
+            return View(db.Courses.ToList());
         }
-      public ActionResult New()
+        public ActionResult Create()
         {
-            return View("StudentForm");
+            return View();
         }
-        [HttpPost]
-        public ActionResult Save(Student student)
+         public ActionResult Save(Course course)
         {
-            db.Students.Add(student);
+            db.Courses.Add(course);
             db.SaveChanges();
+
             return RedirectToAction("Index");
         }
         public ActionResult Details(int? id)
         {
-            if (id == null)
+            if(id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = db.Students.Find(id);
-            if (student == null)
+            Course course = db.Courses.Find(id);
+            if(course == null)
             {
                 return HttpNotFound();
             }
-            return View(student);
+            return View(course);
         }
-
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = db.Students.Find(id);
-            if (student == null)
+            Course course = db.Courses.Find(id);
+            if (course == null)
             {
                 return HttpNotFound();
             }
-            return View(student);
+            return View(course);
         }
-
-        // POST: Student/Edit/5
-       
         [HttpPost, ActionName("Edit")]
-        [ValidateAntiForgeryToken]
         public ActionResult EditPost(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var studentToUpdate = db.Students.Find(id);
-            if (TryUpdateModel(studentToUpdate, "",
-               new string[] { "LastName", "FirstMidName", "EnrollmentDate" }))
+            var courseToUpdate = db.Courses.Find(id);
+            if(TryUpdateModel(courseToUpdate,"",
+                new string[] { "Title","Credits"}))
             {
                 try
                 {
                     db.SaveChanges();
-
                     return RedirectToAction("Index");
                 }
-                catch (RetryLimitExceededException /* dex */)
+                catch (RetryLimitExceededException)
                 {
-                    //Log the error (uncomment dex variable name and add a line here to write a log.
-                    ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+
+                    ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator. ");
                 }
             }
-            return View(studentToUpdate);
+            return View(courseToUpdate);
         }
-
-
-        // GET: Student/Delete/5
-        public ActionResult Delete(int? id, bool? saveChangesError = false)
+        public ActionResult Delete(int? id, bool? saveChangesError =false )
         {
             if (id == null)
             {
@@ -100,28 +89,27 @@ namespace ContosoUniversity.Controllers
             {
                 ViewBag.ErrorMessage = "Delete failed. Try again, and if the problem persists see your system administrator.";
             }
-            Student student = db.Students.Find(id);
-            if (student == null)
+            Course course = db.Courses.Find(id);
+            if (course == null)
             {
                 return HttpNotFound();
             }
-            return View(student);
-        }
+            return View(course);
 
-        // POST: Student/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        }
+[HttpPost]
         public ActionResult Delete(int id)
         {
             try
             {
-                Student student = db.Students.Find(id);
-                db.Students.Remove(student);
+                Course course = db.Courses.Find(id);
+                db.Courses.Remove(course);
                 db.SaveChanges();
+              
             }
-            catch (RetryLimitExceededException/* dex */)
+            catch (RetryLimitExceededException)
             {
-                //Log the error (uncomment dex variable name and add a line here to write a log.
+
                 return RedirectToAction("Delete", new { id = id, saveChangesError = true });
             }
             return RedirectToAction("Index");

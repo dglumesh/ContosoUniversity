@@ -17,9 +17,9 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>@item.FirstMidName</td>
-            <td>@item.LastName</td>
-            <td>@item.EnrollmentDate</td>
+            <td>@Html.DisplayFor(m=>item.FirstMidName)</td>
+            <td>@Html.DisplayFor(m=>item.LastName)</td>
+            <td>@Html.DisplayFor(m=>item.EnrollmentDate, "{0:d MMM yyyy}")</td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.StudentID}) |
                 @Html.ActionLink("Details", "Details", new { id = item.StudentID }) |

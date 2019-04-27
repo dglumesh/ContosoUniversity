@@ -1,0 +1,15 @@
+﻿@model ContosoUniversity.Models.Course
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+<div>
+    @Html.DisplayNameFor(m => m.Title) : @Html.DisplayFor(m=>m.Title)
+</div>
+<div>
+    @Html.DisplayNameFor(m=>m.Credits) : @Html.DisplayFor(m=>m.Credits)
+</div>
+<hr/>
+<a href='@Url.Action("Index")'>Back to List</a>
