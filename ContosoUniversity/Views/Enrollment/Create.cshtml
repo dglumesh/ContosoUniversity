@@ -1,0 +1,45 @@
+﻿@model ContosoUniversity.Models.Enrollment
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+<div class="form-horizontal">
+    @using (Html.BeginForm())
+    {
+        <div class="form-group">
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.CourseID, "Course Title")
+            </div>
+            
+            <div class="col-md-10">
+                @Html.DropDownList("CourseID", null, "Select Course Title", new { @class = "form-control col-md-2" })
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.StudentID, "Student Name")
+                </div>
+                <div class="col-md-10">
+                    @Html.DropDownList("StudentID", null,"Select Student name", new { @class = "form-control col-md-2" })
+                </div>
+
+            </div>
+
+        <div class="form-group">
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.Grade)
+                </div>
+                <div class="col-md-10">
+
+                    @Html.EnumDropDownListFor(m => m.Grade, "Select Grade", new { @class = "form-control" })
+                </div>
+
+            </div>
+
+            <input type="submit" class="btn btn-primary" />
+            }
+        </div>

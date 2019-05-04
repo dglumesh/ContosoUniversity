@@ -1,0 +1,51 @@
+﻿@model ContosoUniversity.Models.Enrollment
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+<div class="form-horizontal">
+    @using (Html.BeginForm())
+    {
+        <div class="form-group">
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.CourseID, "Course Title")
+            </div>
+
+            <div class="col-md-10">
+                @Html.DropDownList("CourseID", null, new { @class = "form-control col-md-2" })
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.StudentID, "Student Name")
+            </div>
+            <div class="col-md-10">
+
+             @Html.DropDownList("StudentID", null,   new { @class = "form-control col-md-2" })
+               
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.Grade)
+            </div>
+            <div class="col-md-10">
+
+                @Html.EnumDropDownListFor(m => m.Grade, "Select Grade", new { @class = "form-control" })
+            </div>
+
+        </div>
+        @Html.HiddenFor(m => m.EnrollmentID)
+        @Html.HiddenFor(m => m.StudentID)
+        @Html.HiddenFor(m => m.CourseID)
+        <input type="submit" class="btn btn-primary" />
+        @Html.ActionLink("Back to Index", "Index", "Enrollment");
+    }
+</div>

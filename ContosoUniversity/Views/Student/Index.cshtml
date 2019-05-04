@@ -7,24 +7,21 @@
 <h2>Students</h2>
 <a href='@Url.Action("New","Student")' class="btn btn-primary">Create New</a>
 
-<table class="table">
-    <tr>
-        <th>Student First Name</th>
-        <th>Student Last Name</th>
-        <th>Enrollment Date</th>
-        <th></th>
-    </tr>
+<hr/>
+<div class="container">
     @foreach (var item in Model)
     {
-        <tr>
-            <td>@Html.DisplayFor(m=>item.FirstMidName)</td>
-            <td>@Html.DisplayFor(m=>item.LastName)</td>
-            <td>@Html.DisplayFor(m=>item.EnrollmentDate, "{0:d MMM yyyy}")</td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.StudentID}) |
-                @Html.ActionLink("Details", "Details", new { id = item.StudentID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.StudentID })
-            </td>
-        </tr>
+        <div >
+            <div class="col-md-3">
+                <div class="thumbnail">
+                    <img src="~/Images/user.png" style="width:150px; height:150px" alt="...">
+                    <div class="caption">
+                        <h3 style="text-align:center;">@Html.DisplayFor(m => item.FirstMidName) @Html.DisplayFor(m => item.LastName) </h3>
+                        <p align="center">@Html.DisplayFor(m => item.EnrollmentDate, "{0:d MMM yyyy}")</p>
+                        <p align="center"><a href='@Url.Action("Edit","Student",new { id=item.StudentID})' class="btn btn-primary btn-xs" role="button">Edit</a> <a href='@Url.Action("Details","Student",new { id=item.StudentID})' class="btn btn-warning btn-xs" role="button">Details</a> <a href='@Url.Action("Delete","Student",new { id=item.StudentID})' class="btn btn-danger btn-xs" role="button">Delete</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     }
-</table>
+</div>

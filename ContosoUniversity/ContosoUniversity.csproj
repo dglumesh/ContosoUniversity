@@ -154,7 +154,6 @@
     <Compile Include="Models\Enrollment.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\StudentCourseViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -165,6 +164,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\user.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
@@ -206,6 +206,10 @@
     <Content Include="Views\Course\Delete.cshtml" />
     <Content Include="Views\Enrollment\Index.cshtml" />
     <Content Include="Views\Enrollment\EnrollmentForm.cshtml" />
+    <Content Include="Views\Enrollment\Create.cshtml" />
+    <Content Include="Views\Enrollment\Edit.cshtml" />
+    <Content Include="Views\Enrollment\Details.cshtml" />
+    <Content Include="Views\Enrollment\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
